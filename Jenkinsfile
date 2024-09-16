@@ -21,7 +21,7 @@ pipeline {
 
         stage('Build') {
             steps {
-                sh 'sudo npm install'
+                sh 'npm init'
             }
         }
 
