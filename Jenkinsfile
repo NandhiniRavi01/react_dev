@@ -1,5 +1,13 @@
 pipeline {
-    agent any
+        agent {
+        docker {
+            image 'node:6-alpine'
+            args '-p 3000:3000'
+        }
+    }
+        environment {
+        CI = 'true'
+    }
     tools{
      nodejs 'nodejs'
     }
@@ -14,23 +22,10 @@ pipeline {
 
        
 
-        stage('Install Node.js') {
-            steps {
-                script {
-                    
+        
 
-                    // Install Node.js 18.x
-                    sh '''
-                    curl -sL https://deb.nodesource.com/setup_18.x | sudo -E bash -
-                    sudo apt-get install -y nodejs
-                    '''
-                }
-            }
-        }
-
-        stage('Install Dependencies') {
+        stage('Build') {
             steps {
-                // Install npm dependencies
                 sh 'npm install'
             }
         }
@@ -45,7 +40,7 @@ pipeline {
         stage('Run Application') {
             steps {
                 // Run your Node.js app
-                sh 'node rect js/src/index.js'
+                sh 'node react js/src/index.js'
             }
         }
     }
