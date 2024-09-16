@@ -6,9 +6,7 @@ WORKDIR /app
 
 
 # Copy package.json and package-lock.json files into the working directory
-COPY package.json package.json
-COPY package-lock.json package-lock.json
-
+COPY package*.json ./
 # Debugging step: List contents after copying package files
 
 
