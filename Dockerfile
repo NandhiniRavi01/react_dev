@@ -1,5 +1,5 @@
 # Set the working directory
-WORKDIR /app
+WORKDIR /react
 
 # Copy the package.json from the react-app folder
 COPY react-app/package*.json ./
