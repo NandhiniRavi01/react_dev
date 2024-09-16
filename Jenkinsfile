@@ -12,22 +12,12 @@ pipeline {
             }
         }
 
-        stage('Check Files') {
-            steps {
-                // List files to ensure package.json is present
-                sh 'ls -la /var/lib/jenkins/workspace/nodejs_work'
-            }
-        }
+       
 
         stage('Install Node.js') {
             steps {
                 script {
-                    // Remove conflicting packages
-                    sh '''
-                    sudo apt-get remove --purge -y nodejs libnode-dev
-                    sudo apt-get autoremove -y
-                    sudo apt-get clean
-                    '''
+                    
 
                     // Install Node.js 18.x
                     sh '''
